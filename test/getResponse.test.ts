@@ -44,7 +44,7 @@ describe("API Automation Test", () => {
     const getData = getresponse.body;
     console.log("getData", getData);
     expect(getresponse.status).to.equal(201)
-    expect(getData.First_name).to.eql(data.First_name);
+    expect(getData.First_name).to.eql(data.First_name)
     expect(getData.Last_name).to.eql(data.Last_name)
     expect(getData.Email).to.eql(data.Email);
     getuserID = getData.id;
