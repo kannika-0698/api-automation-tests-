@@ -46,9 +46,9 @@ describe("API Automation Test", () => {
     expect(getresponse.status).to.equal(201)
     expect(getData.First_name).to.eql(data.First_name)
     expect(getData.Last_name).to.eql(data.Last_name)
-    expect(getData.Email).to.eql(data.Email);
+    expect(getData.Email).to.eql(data.Email)
     getuserID = getData.id;
-    console.log("getuserID", getuserID);
+    console.log("getuserID", getuserID)
   });
 
   it("Verify that the API returns updated/edited data for the specified user using an ID when the user requested to update/edit the user details", async () => {
