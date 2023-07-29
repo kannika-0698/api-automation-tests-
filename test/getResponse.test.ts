@@ -19,7 +19,7 @@ describe("API Automation Test", () => {
     expect(response.status).to.equal(200)
     expect(filterDataByNameAndEmail).to.be.an('array')
     console.log(filterDataByNameAndEmail);
-    console.log("response status", response.status);
+    console.log("response status", response.status)
   });
 
   it("Verify that the API returns the users details from the given ID when the user requested for the user details corresponded to the given ID" , async () => {
@@ -31,7 +31,7 @@ describe("API Automation Test", () => {
     expect(getData.first_name).to.eql('George');
     expect(getData.last_name).to.eql('Bluth');
     expect(getData.email).to.eql('george.bluth@reqres.in');
-    expect(getData.avatar).to.eql('https://reqres.in/img/faces/1-image.jpg');
+    expect(getData.avatar).to.eql('https://reqres.in/img/faces/1-image.jpg')
   });
 
   it("Verify that the API creates the new user by given data when the user requested to create a user", async () => { 
