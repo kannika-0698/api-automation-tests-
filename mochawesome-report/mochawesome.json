@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-29T14:07:48.077Z",
+    "end": "2023-07-29T14:07:50.185Z",
+    "duration": 2108,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "db6d6a11-009d-42c1-8a52-58a36c1796de",
+      "title": "",
+      "fullFile": "/Users/kannikatk/Documents/APIAutomation/executionFile/getResponse.test.js",
+      "file": "/executionFile/getResponse.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "84ec029b-d25c-4741-8864-6997432c13e8",
+          "title": "API Automation Test",
+          "fullFile": "/Users/kannikatk/Documents/APIAutomation/executionFile/getResponse.test.js",
+          "file": "/executionFile/getResponse.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify that the API returns of all the users 'First Name' and 'Email' by filtering when the user requested to get the first name and email from the users list",
+              "fullTitle": "API Automation Test Verify that the API returns of all the users 'First Name' and 'Email' by filtering when the user requested to get the first name and email from the users list",
+              "timedOut": false,
+              "duration": 639,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request.get(\"api/users?page=1\").query({ token: getToken });\nconst getData = response.body.data;\nconsole.log(\"getData\", getData);\n(0, chai_1.expect)(response.body.data).to.not.be.empty;\nconst filterDataByNameAndEmail = getData.map((name) => ({\n    firstName: name.first_name,\n    email: name.email,\n}));\n(0, chai_1.expect)(response.status).to.equal(200);\n(0, chai_1.expect)(filterDataByNameAndEmail).to.be.an('array');\nconsole.log(filterDataByNameAndEmail);\nconsole.log(\"response status\", response.status);",
+              "err": {},
+              "uuid": "1317e0e9-0d91-4840-9946-25e9709c4215",
+              "parentUUID": "84ec029b-d25c-4741-8864-6997432c13e8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify that the API returns the users details from the given ID when the user requested for the user details corresponded to the given ID",
+              "fullTitle": "API Automation Test Verify that the API returns the users details from the given ID when the user requested for the user details corresponded to the given ID",
+              "timedOut": false,
+              "duration": 462,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const getAPIresponse = await request.get(`api/users/${passId}`).query({ token: getToken });\nconst getData = getAPIresponse.body.data;\nconsole.log(\"getData\", getData);\n(0, chai_1.expect)(getAPIresponse.status).to.equal(200);\n(0, chai_1.expect)(getData.id).to.equals(passId);\n(0, chai_1.expect)(getData.first_name).to.eql('George');\n(0, chai_1.expect)(getData.last_name).to.eql('Bluth');\n(0, chai_1.expect)(getData.email).to.eql('george.bluth@reqres.in');\n(0, chai_1.expect)(getData.avatar).to.eql('https://reqres.in/img/faces/1-image.jpg');",
+              "err": {},
+              "uuid": "c0aaf914-f2c1-4360-9433-6d72779aafb4",
+              "parentUUID": "84ec029b-d25c-4741-8864-6997432c13e8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify that the API creates the new user by given data when the user requested to create a user",
+              "fullTitle": "API Automation Test Verify that the API creates the new user by given data when the user requested to create a user",
+              "timedOut": false,
+              "duration": 526,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = {\n    First_name: \"Kannika\",\n    Last_name: \"TK\",\n    Email: faker_1.faker.internet.email()\n};\nconst getresponse = await request.post(\"api/users?page=1\").send(data);\nconst getData = getresponse.body;\nconsole.log(\"getData\", getData);\n(0, chai_1.expect)(getresponse.status).to.equal(201);\n(0, chai_1.expect)(getData.First_name).to.eql(data.First_name);\n(0, chai_1.expect)(getData.Last_name).to.eql(data.Last_name);\n(0, chai_1.expect)(getData.Email).to.eql(data.Email);\ngetuserID = getData.id;\nconsole.log(\"getuserID\", getuserID);",
+              "err": {},
+              "uuid": "3f88c731-5673-486c-86ae-33f5219a5fdb",
+              "parentUUID": "84ec029b-d25c-4741-8864-6997432c13e8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify that the API returns updated/edited data for the specified user using an ID when the user requested to update/edit the user details",
+              "fullTitle": "API Automation Test Verify that the API returns updated/edited data for the specified user using an ID when the user requested to update/edit the user details",
+              "timedOut": false,
+              "duration": 457,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = {\n    First_name: \"EditedFirstName\",\n    Last_name: \"EditedTK\",\n    Email: faker_1.faker.internet.email()\n};\nconst getPutResponse = await request.put(`api/users/${getuserID}`).send(data);\nconst getData = getPutResponse.body;\nconsole.log(\"getData\", getData);\n(0, chai_1.expect)(getPutResponse.status).to.equal(200);\n(0, chai_1.expect)(getData.First_name).to.eql(data.First_name);\n(0, chai_1.expect)(getData.Last_name).to.eql(data.Last_name);\n(0, chai_1.expect)(getData.Email).to.eql(data.Email);",
+              "err": {},
+              "uuid": "93a8ff4f-29d9-4d65-bcb5-4e9fd58197b9",
+              "parentUUID": "84ec029b-d25c-4741-8864-6997432c13e8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1317e0e9-0d91-4840-9946-25e9709c4215",
+            "c0aaf914-f2c1-4360-9433-6d72779aafb4",
+            "3f88c731-5673-486c-86ae-33f5219a5fdb",
+            "93a8ff4f-29d9-4d65-bcb5-4e9fd58197b9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2084,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 50000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 50000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

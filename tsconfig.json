@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "target": "ES2019",
+      "module": "commonjs",
+      "outDir": "executionFile",
+      "strict": true,
+      "types": ["node", "mocha", "@types/supertest"],
+      "esModuleInterop": true
+    },
+    "include": [
+      "test/getResponse.test.ts"
+    ],
+
+    "exclude": [
+      "node_modules"
+    ],
+  }
+  
