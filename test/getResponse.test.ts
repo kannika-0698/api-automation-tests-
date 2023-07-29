@@ -17,7 +17,7 @@ describe("API Automation Test", () => {
       email: name.email,
     }));
     expect(response.status).to.equal(200)
-    expect(filterDataByNameAndEmail).to.be.an('array');
+    expect(filterDataByNameAndEmail).to.be.an('array')
     console.log(filterDataByNameAndEmail);
     console.log("response status", response.status);
   });
