@@ -3,13 +3,12 @@ import {expect} from "chai"
 import { faker } from '@faker-js/faker';
 
 const request = supertest("https://reqres.in/");
-const getToken = "4d774d50a0e803173dcd27ea84be05600051f8ae8a27c950bcf539a2d4cb2950";
 const passId = 1
 
 describe("API Automation Test", () => {
   let getuserID: number;
   it("Verify that the API returns of all the users 'First Name' and 'Email' by filtering when the user requested to get the first name and email from the users list", async () => {
-    const response = await request.get("api/users?page=1").query({ token: getToken });
+    const response = await request.get("api/users?page=1")
     const getData = response.body.data;
     console.log("getData", getData);
     expect(response.body.data).to.not.be.empty;
@@ -24,7 +23,7 @@ describe("API Automation Test", () => {
   });
 
   it("Verify that the API returns the users details from the given ID when the user requested for the user details corresponded to the given ID" , async () => {
-    const getAPIresponse = await request.get(`api/users/${passId}`).query({ token: getToken });
+    const getAPIresponse = await request.get(`api/users/${passId}`)
     const getData = getAPIresponse.body.data;
     console.log("getData", getData);
     expect(getAPIresponse.status).to.equal(200);

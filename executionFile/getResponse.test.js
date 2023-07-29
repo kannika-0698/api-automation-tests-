@@ -7,12 +7,11 @@ const supertest_1 = __importDefault(require("supertest"));
 const chai_1 = require("chai");
 const faker_1 = require("@faker-js/faker");
 const request = (0, supertest_1.default)("https://reqres.in/");
-const getToken = "4d774d50a0e803173dcd27ea84be05600051f8ae8a27c950bcf539a2d4cb2950";
 const passId = 1;
 describe("API Automation Test", () => {
     let getuserID;
     it("Verify that the API returns of all the users 'First Name' and 'Email' by filtering when the user requested to get the first name and email from the users list", async () => {
-        const response = await request.get("api/users?page=1").query({ token: getToken });
+        const response = await request.get("api/users?page=1");
         const getData = response.body.data;
         console.log("getData", getData);
         (0, chai_1.expect)(response.body.data).to.not.be.empty;
@@ -26,7 +25,7 @@ describe("API Automation Test", () => {
         console.log("response status", response.status);
     });
     it("Verify that the API returns the users details from the given ID when the user requested for the user details corresponded to the given ID", async () => {
-        const getAPIresponse = await request.get(`api/users/${passId}`).query({ token: getToken });
+        const getAPIresponse = await request.get(`api/users/${passId}`);
         const getData = getAPIresponse.body.data;
         console.log("getData", getData);
         (0, chai_1.expect)(getAPIresponse.status).to.equal(200);
